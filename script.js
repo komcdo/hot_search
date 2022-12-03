@@ -40,7 +40,7 @@
         .hotzearch.noAnim .zearchTokenWrap{transition: none !important;}
         `;
     document.head.append(style);
-    const closeBtn = `<svg viewBox="0 0 15 15" aria-hidden="true" class="r-cqee49 r-4qtqp9 r-yyyyoo r-1or9b2r r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-5soawk"><g><path d="M6.09 7.5L.04 1.46 1.46.04 7.5 6.09 13.54.04l1.42 1.42L8.91 7.5l6.05 6.04-1.42 1.42L7.5 8.91l-6.04 6.05-1.42-1.42L6.09 7.5z"></path></g></svg>`;
+    const closeBtn = `<svg viewBox="0 0 15 15" width="10px" height="10px" aria-hidden="true" class="r-cqee49 r-4qtqp9 r-yyyyoo r-1or9b2r r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-5soawk"><g><path d="M6.09 7.5L.04 1.46 1.46.04 7.5 6.09 13.54.04l1.42 1.42L8.91 7.5l6.05 6.04-1.42 1.42L7.5 8.91l-6.04 6.05-1.42-1.42L6.09 7.5z"></path></g></svg>`;
     const filterBtn = `<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor" class="bi bi-funnel" viewBox="0 0 16 16"><path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2h-11z"></path></svg>`;
 
     function waitForElm(selector) {
@@ -295,6 +295,8 @@
     </div>`;
     let filterDialogShown = false;
     const showFilterDialog = () => {
+        event.preventDefault();
+        event.stopPropagation();
         if(!filterDialogShown){
             filterDialogShown = true;
             filterButton.innerHTML = filterBtn + filterDialog; // Can't hide/show with a class because on search submit Twitter will select this input
@@ -362,7 +364,6 @@
             });
             prepend += getInlineTokenAsText();
             setNativeValue(searchInput, prepend + value);
-            setTimeout(init, 0);
             return true;
         }
         if(event.key == " " && value.endsWith("@")) return false;
@@ -403,6 +404,7 @@
         inlineContent = {};
         inlineTokenExists = false;
         if(filterButton && filterButton.isConnected) filterButton.remove();
+        filterDialogShown = false;
         filterButton = document.createElement("div");
         filterButton.classList.add("filterButton");
         filterButton.innerHTML = filterBtn;
@@ -449,7 +451,6 @@
 
     let previousLoc = {...location};
     let observer = new MutationObserver(function(mutations) {
-        if(previousLoc.pathname == "/search" && location.pathname == "/search") return; // Pressing enter on search page already handled.
         if (location.href !== previousLoc.href) {
             previousLoc = {...location};
             init();
