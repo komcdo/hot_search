@@ -1,0 +1,13 @@
+{
+    "manifest_version": 3,
+    "name": "Twitter Hot Search",
+    "version": "1.0",
+    "content_scripts": [
+      {
+        "matches": [
+          "https://*.twitter.com/*"
+        ],
+        "js": ["script.js"]
+      }
+    ]
+  }

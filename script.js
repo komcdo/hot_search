@@ -56,7 +56,7 @@
     }
 
     const setNativeValue = (element, value) => {
-        const valueSetter = Object.getOwnPropertyDescriptor(element, 'value').set;
+        const valueSetter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set;
         const prototype = Object.getPrototypeOf(element);
         const prototypeValueSetter = Object.getOwnPropertyDescriptor(prototype, 'value').set;
         if (valueSetter && valueSetter !== prototypeValueSetter) {
@@ -423,11 +423,11 @@
                     searchInput.type = "text";
                     lastValue = "";
                 }else{
-                    e.target.type = "date";
-                    e.target.showPicker();
+                    searchInput.type = "date";
+                    searchInput.showPicker();
                 }
             }else{
-                e.target.type = "text";
+                searchInput.type = "text";
             }
         });
         searchForm.addEventListener("click", (event) => {
