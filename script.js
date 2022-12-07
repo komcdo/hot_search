@@ -22,22 +22,45 @@
         .hotzearch .inlineToken.minSize.creating {width: 0px !important; padding: 3px 0 5px;}
         .hotzearch .inlineToken.minSize.deleting {width: 0px !important; padding: 3px 0 5px;}
         .hotzearch .hotzearch_inline .inlineToken {display: block;}
-        .hotzearch .staticToken { white-space: nowrap; position: relative; float: left; background: #5d5d5d; font-size: 14px; padding: 8px 16px; line-height: 10px; border-radius: 16px; cursor: pointer; margin:0 8px 8px 0; opacity: 1; transition: width ${tokenAnimationSpeed}, height ${tokenAnimationSpeed}, margin ${tokenAnimationSpeed}; will-change: width, height, margin-top;}
+        .hotzearch .staticToken { white-space: nowrap; position: relative; float: left; color: white; background: #5d5d5d; font-size: 14px; padding: 8px 16px; line-height: 10px; border-radius: 16px; cursor: pointer; margin:0 8px 8px 0; opacity: 1; transition: width ${tokenAnimationSpeed}, height ${tokenAnimationSpeed}, margin ${tokenAnimationSpeed}; will-change: width, height, margin-top;}
         .hotzearch .staticToken::first-letter { text-transform:capitalize; }
-        .hotzearch .staticToken .staticTokenRemove{ height: 16px; width: 16px; position: absolute; right: 2px; top: 2px; background: #cfcfcf; border-radius: 50%; padding: 3px 0px 3px 6px; line-height: 10px; color: black; opacity: 0; transition: opacity 0.3s;}
+        .hotzearch .staticToken .staticTokenRemove{ height: 16px; width: 16px; position: absolute; right: 2px; top: 2px; background: #cfcfcf; border-radius: 50%; padding: 3px 0px 3px 6px; line-height: 10px; color: black; opacity: 0;}
         .hotzearch .staticToken:hover .staticTokenRemove {opacity: 1;}
+        .hotzearch .staticToken:hover {padding-right:27px;}
         .hotzearch .staticToken.invisible {opacity: 0}
         .hotzearch .cloneToken {display: block; position: absolute; z-index: 1; transition: transform ${tokenAnimationSpeed}, font-size ${tokenAnimationSpeed}, padding ${tokenAnimationSpeed}, line-height ${tokenAnimationSpeed}, height ${tokenAnimationSpeed}; will-change: transform, font-size, padding, line-height, height;}
         .hotzearch .zearchTokenWrap {position: relative; height: 0; padding-bottom: 4px; margin-top: -4px; transition: margin-top ${tokenAnimationSpeed}, height ${tokenAnimationSpeed}; will-change: margin-top, height;}
         .hotzearch .zearchTokenWrap.noDelayAnim {transition: margin-top .3s, height .3s; }
         .hotzearch .filterButton { position: relative; top: 7px; margin-right: 5px; height: 20px; width: 20px; color: #999da1; border-radius: 13px; padding: 4px 6px; display: block; white-space: nowrap; cursor: pointer;}
-        .hotzearch .filterDialog { position: absolute; top: 41px; right: -7px; background: #36393f; padding-right: 8px; border-radius: 16px; }
-        .hotzearch .filterDialog select{ background: #4a4c52; border: none; font-size: 15px; border-top-left-radius: 16px; border-bottom-left-radius: 16px; padding: 5px 0px 5px 15px;}
-        .hotzearch .filterDialog input{ background: none; border: none; padding: 6px 0 6px 6px; font-size: 15px; outline: none; width: 200px;}
+        .hotzearch .filterDialog { position: absolute; top: 41px; right: -7px; background: #36393f; padding-right: 8px; border-radius: 16px;}
+        .hotzearch .filterDialog select{ background: #4a4c52; border: none; font-size: 15px; border-top-left-radius: 16px; border-bottom-left-radius: 16px; padding: 5px 0px 5px 15px; color: white;}
+        .hotzearch .filterDialog input{ background: none; border: none; padding: 6px 0 6px 6px; font-size: 15px; outline: none; width: 200px; color: white }
         .hotzearch.noAnim {transition: none !important;}
         .hotzearch.noAnim .inlineToken{transition: none;}
         .hotzearch.noAnim .staticToken{transition: none;}
         .hotzearch.noAnim .zearchTokenWrap{transition: none !important;}
+        @media (prefers-color-scheme: light) {
+            .hotzearch .filterDialog {
+                background: #e6e6e6;
+            }
+            .hotzearch .filterDialog select {
+                background: #1d9bf0;
+                padding: 5px 0px 6px 15px;
+            }
+            .hotzearch .staticToken { 
+                background: #1d9bf0;
+            }
+            .hotzearch .hotzearch_inline .inlineToken {
+                background: #1d9bf0;
+                color: white;
+            }
+            .hotzearch .staticToken .staticTokenRemove{
+                background: #fafafa;
+            }
+            .hotzearch .filterDialog input{ color:black;}
+            .hotzearch .filterDialog select{ color:black;}
+        }
+
         `;
     document.head.append(style);
     const closeBtn = `<svg viewBox="0 0 15 15" width="10px" height="10px" aria-hidden="true" class="r-cqee49 r-4qtqp9 r-yyyyoo r-1or9b2r r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-5soawk"><g><path d="M6.09 7.5L.04 1.46 1.46.04 7.5 6.09 13.54.04l1.42 1.42L8.91 7.5l6.05 6.04-1.42 1.42L7.5 8.91l-6.04 6.05-1.42-1.42L6.09 7.5z"></path></g></svg>`;
