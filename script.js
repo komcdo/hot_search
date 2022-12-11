@@ -26,7 +26,6 @@
         .hotzearch .staticToken::first-letter { text-transform:capitalize; }
         .hotzearch .staticToken .staticTokenRemove{ height: 16px; width: 16px; position: absolute; right: 2px; top: 2px; background: #cfcfcf; border-radius: 50%; padding: 3px 0px 3px 6px; line-height: 10px; color: black; opacity: 0;}
         .hotzearch .staticToken:hover .staticTokenRemove {opacity: 1;}
-        .hotzearch .staticToken:hover {padding-right:27px;}
         .hotzearch .staticToken.invisible {opacity: 0}
         .hotzearch .cloneToken {display: block; position: absolute; z-index: 1; transition: transform ${tokenAnimationSpeed}, font-size ${tokenAnimationSpeed}, padding ${tokenAnimationSpeed}, line-height ${tokenAnimationSpeed}, height ${tokenAnimationSpeed}; will-change: transform, font-size, padding, line-height, height;}
         .hotzearch .zearchTokenWrap {position: relative; height: 0; padding-bottom: 4px; margin-top: -4px; transition: margin-top ${tokenAnimationSpeed}, height ${tokenAnimationSpeed}; will-change: margin-top, height;}
@@ -43,17 +42,10 @@
             .hotzearch .filterDialog {
                 background: #e6e6e6;
             }
-            .hotzearch .filterDialog select {
-                background: #1d9bf0;
-                padding: 5px 0px 6px 15px;
-            }
-            .hotzearch .staticToken { 
-                background: #1d9bf0;
-            }
-            .hotzearch .hotzearch_inline .inlineToken {
-                background: #1d9bf0;
-                color: white;
-            }
+            .hotzearch .filterDialog select,
+            .hotzearch .staticToken,
+            .hotzearch .cloneToken,
+            .hotzearch .hotzearch_inline .inlineToken { background: #1d9bf0; color: white; }
             .hotzearch .staticToken .staticTokenRemove{
                 background: #fafafa;
             }
