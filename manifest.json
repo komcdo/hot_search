@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "Twitter Hot Search",
-    "version": "1.0",
+    "version": "1.1",
     "content_scripts": [
       {
         "matches": [
